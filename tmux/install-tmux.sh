@@ -4,9 +4,10 @@ VER=${1:-3.1c}
 sudo apt update
 sudo apt install -y build-essential autoconf automake pkg-config \
     libevent-dev libncurses5-dev bison byacc git
-test -d /tmp/tmux && rm -rf /tmp/tmux
-git clone https://github.com/tmux/tmux.git /tmp/tmux
-cd /tmp/tmux
+TMP_TMUX='/tmp/tmux'
+test -d $TMP_TMUX && rm -rf $TMP_TMUX
+git clone https://github.com/tmux/tmux.git $TMP_TMUX
+cd $TMP_TMUX
 git checkout $VER
 sh autogen.sh
 ./configure && make

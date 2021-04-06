@@ -14,24 +14,25 @@ sh autogen.sh
 sudo make install
 test -f ~/.tmux.conf.bak && exit
 mv ~/.tmux.conf ~/.tmux.conf.bak
-cat > ~/.tmux.conf << EOL
+cat > ~/.tmux.conf << EOF
 set -ga terminal-overrides ",xterm-256color*:Tc"
-
 unbind C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
-set -g status-style 'bg=#333333 fg=#5eacd3'
-
+set -g status-style 'bg=black fg=#5eacd3'
+set -g status-right '%a %Y-%m-%d %H:%M'
 bind r source-file ~/.tmux.conf
 set -g base-index 1
-
 set-window-option -g mode-keys vi
 bind-key -T copy-mode-vi v send-keys -X begin-selection
 bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
-
 # vim-like pane switching
 bind -r k select-pane -U
 bind -r j select-pane -D
 bind -r h select-pane -L
 bind -r l select-pane -R
-EOL
+# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+run '~/.tmux/plugins/tpm/tpm'
+EOF

@@ -26,6 +26,8 @@ set -g base-index 1
 set-window-option -g mode-keys vi
 bind-key -T copy-mode-vi v send-keys -X begin-selection
 bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+set mouse on
+set -g mouse-select-pane on
 # vim-like pane switching
 bind -r k select-pane -U
 bind -r j select-pane -D

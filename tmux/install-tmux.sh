@@ -22,7 +22,7 @@ set-option -g prefix C-a
 bind-key C-a send-prefix
 set -g status-style 'bg=black fg=#5eacd3'
 set -g status-right '%a %Y-%m-%d %H:%M'
-bind r source-file ~/.tmux.conf
+bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 set -g base-index 1
 set -g history-limit 5000
 set-window-option -g mode-keys vi

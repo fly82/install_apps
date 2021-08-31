@@ -7,6 +7,6 @@
  
 # old vim
 ```
-ar `find . ! -path '*/logs/*' -type f ! -name '*.jar' -print0 | xargs -0 grep -Il "<STRING>"`
-argdo %s/<OLD>/<NEW>/ge | update
+:ar `find . ! -path '*/logs/*' -type f ! -name '*.jar' -print0 | xargs -0 grep -Il "<STRING>"`
+:argdo %s/<OLD>/<NEW>/ge | update
 ```
